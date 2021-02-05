@@ -22,7 +22,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
-    "jsx": "react-jsx"
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
   "include": [
     "src",

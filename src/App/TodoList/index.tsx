@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import Item from './Item'
 import { useRecoilState } from 'recoil'
 import { Layout } from './style'
-import { AppState, recoilState, Routes, Todo } from '../../dataStructure'
+import { AppState, recoilState, Routes, Todo } from '@/dataStructure'
 
 interface Props {
   path: Routes
@@ -10,7 +10,8 @@ interface Props {
 
 const TodoList: React.FC<Props> = ({ path }) => {
   const [appState, setAppState] = useRecoilState<AppState>(recoilState)
-  function toggleAllCheckbox(e: React.ChangeEvent<HTMLInputElement>): void { /* eslint-disable-line prettier/prettier */
+  function toggleAllCheckbox(e: React.ChangeEvent<HTMLInputElement>): void {
+    /* eslint-disable-line prettier/prettier */
     // reverse all todo.completed: boolean flag
     setAppState({
       todoList: appState.todoList.map(
