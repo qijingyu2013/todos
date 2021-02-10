@@ -10,19 +10,19 @@ const initialRecoilState: AppState = {
       id: 'TsHx9eEN5Y4A',
       bodyText: 'monster',
       completed: false,
-      date: new Date,
+      date: new Date(),
     },
     {
       id: 'ba91OwrK0Dt8',
       bodyText: 'boss black',
       completed: false,
-      date: new Date,
+      date: new Date(),
     },
     {
       id: 'QwejYipEf5nk',
       bodyText: 'caffe latte',
       completed: false,
-      date: new Date,
+      date: new Date(),
     },
   ],
 }
@@ -56,14 +56,32 @@ test('should be work correctly all completed:true|false checkbox toggle button',
   // toggle on
   fireEvent.click(screen.getByTestId('toggle-all-btn'))
   // should be completed all todo items
-  expect((screen.getAllByTestId('todo-item-complete-check')[0] as HTMLInputElement).checked).toBe(true) /* eslint-disable-line prettier/prettier */
-  expect((screen.getAllByTestId('todo-item-complete-check')[1] as HTMLInputElement).checked).toBe(true) /* eslint-disable-line prettier/prettier */
-  expect((screen.getAllByTestId('todo-item-complete-check')[2] as HTMLInputElement).checked).toBe(true) /* eslint-disable-line prettier/prettier */
+  expect(
+    (screen.getAllByTestId('todo-item-complete-check')[0] as HTMLInputElement)
+      .checked
+  ).toBe(true) /* eslint-disable-line prettier/prettier */
+  expect(
+    (screen.getAllByTestId('todo-item-complete-check')[1] as HTMLInputElement)
+      .checked
+  ).toBe(true) /* eslint-disable-line prettier/prettier */
+  expect(
+    (screen.getAllByTestId('todo-item-complete-check')[2] as HTMLInputElement)
+      .checked
+  ).toBe(true) /* eslint-disable-line prettier/prettier */
 
   // toggle off
   fireEvent.click(screen.getByTestId('toggle-all-btn'))
   // should be not comleted all todo items
-  expect((screen.getAllByTestId('todo-item-complete-check')[0] as HTMLInputElement).checked).toBe(false) /* eslint-disable-line prettier/prettier */
-  expect((screen.getAllByTestId('todo-item-complete-check')[1] as HTMLInputElement).checked).toBe(false) /* eslint-disable-line prettier/prettier */
-  expect((screen.getAllByTestId('todo-item-complete-check')[2] as HTMLInputElement).checked).toBe(false) /* eslint-disable-line prettier/prettier */
+  expect(
+    (screen.getAllByTestId('todo-item-complete-check')[0] as HTMLInputElement)
+      .checked
+  ).toBe(false) /* eslint-disable-line prettier/prettier */
+  expect(
+    (screen.getAllByTestId('todo-item-complete-check')[1] as HTMLInputElement)
+      .checked
+  ).toBe(false) /* eslint-disable-line prettier/prettier */
+  expect(
+    (screen.getAllByTestId('todo-item-complete-check')[2] as HTMLInputElement)
+      .checked
+  ).toBe(false) /* eslint-disable-line prettier/prettier */
 })

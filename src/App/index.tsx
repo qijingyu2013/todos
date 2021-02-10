@@ -12,6 +12,7 @@ import {
   LocalStorageKey,
   Routes,
 } from '../dataStructure'
+import DailyPicker from './DailyPicker'
 
 interface Props {
   path: Routes
@@ -30,6 +31,7 @@ const App: React.FC<Props & RouteComponentProps> = ({ path }) => {
 
   return (
     <Layout>
+      <DailyPicker />
       <section className="todoapp">
         <NewTodoInput />
         {appState.todoList.length ? (

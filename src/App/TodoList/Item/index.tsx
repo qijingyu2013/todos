@@ -1,4 +1,4 @@
-import React, { useState, createRef, useEffect } from 'react'
+import React, { createRef, useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { Layout } from './style'
 import {
@@ -82,7 +82,11 @@ const Item: React.FC<Props> = ({ todo }) => {
     setAppState({ todoList: removed })
   }
 
-  const handleTodoTextEdit = (e: React.ChangeEvent<HTMLInputElement>, onEdit: Todo['id']): void => { /* eslint-disable-line prettier/prettier */
+  const handleTodoTextEdit = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    onEdit: Todo['id']
+  ): void => {
+    /* eslint-disable-line prettier/prettier */
     const edited = appState.todoList.map(
       (t: Todo): Todo => {
         if (t.id === onEdit) {
@@ -133,8 +137,12 @@ const Item: React.FC<Props> = ({ todo }) => {
           onBlur={(e: React.FocusEvent<HTMLInputElement>) => onBlurEdit(e)}
           className="edit"
           value={todo.bodyText}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleTodoTextEdit(e, todo.id)} /* eslint-disable-line prettier/prettier */
-          onKeyPress={(e: React.KeyboardEvent<HTMLInputElement>) => submitEditText(e)} /* eslint-disable-line prettier/prettier */
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            handleTodoTextEdit(e, todo.id)
+          } /* eslint-disable-line prettier/prettier */
+          onKeyPress={(e: React.KeyboardEvent<HTMLInputElement>) =>
+            submitEditText(e)
+          } /* eslint-disable-line prettier/prettier */
           data-cy="todo-edit-input"
           data-testid="todo-edit-input"
         />

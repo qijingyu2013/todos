@@ -7,7 +7,6 @@ export interface Todo {
   bodyText: string
   completed: boolean
   date: Date
-  // time: string
 }
 
 export type TodoListType = Todo[]
@@ -21,19 +20,16 @@ export enum LocalStorageKey {
 }
 
 function LoadAppStateFromLocalStorage(): AppState {
-  const stringifiedJSON: string | null = window.localStorage.getItem(
+  const stringifyJSON: string | null = window.localStorage.getItem(
     LocalStorageKey.APP_STATE
   )
-  if (typeof stringifiedJSON === 'string') {
-    const loaded: AppState = JSON.parse(stringifiedJSON)
-    return loaded
+  if (typeof stringifyJSON === 'string') {
+    return JSON.parse(stringifyJSON)
   }
 
-  const BlankAppState: AppState = {
+  return {
     todoList: [],
   }
-
-  return BlankAppState
 }
 
 export const recoilState: RecoilState<AppState> = atom({

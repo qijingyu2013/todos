@@ -10,8 +10,12 @@ interface Props {
 
 const UnderBar: React.FC<Props> = ({ path }) => {
   const [appState, setAppState] = useRecoilState<AppState>(recoilState)
-  const doneCount: number = appState.todoList.filter(t => t.completed === true).length /* eslint-disable-line prettier/prettier */
-  const yetCount: number = appState.todoList.filter(t => t.completed === false).length /* eslint-disable-line prettier/prettier */
+  const doneCount: number = appState.todoList.filter(
+    (t) => t.completed === true
+  ).length /* eslint-disable-line prettier/prettier */
+  const yetCount: number = appState.todoList.filter(
+    (t) => t.completed === false
+  ).length /* eslint-disable-line prettier/prettier */
 
   function clearCompleted(): void {
     setAppState({
