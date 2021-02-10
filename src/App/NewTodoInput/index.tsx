@@ -36,7 +36,6 @@ const NewTodoTextInput: React.FC = () => {
   return (
     <Layout>
       <header className="header">
-        <h1>todos/daily</h1>
         <input
           type="text"
           className="new-todo"
