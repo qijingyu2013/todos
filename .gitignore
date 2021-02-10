@@ -5,3 +5,5 @@ cypress/screenshots/
 node_modules/
 instrumented/
 .eslintcache
+package-lock.json
+.idea/
