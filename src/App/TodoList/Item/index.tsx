@@ -1,7 +1,12 @@
 import React, { createRef, useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { Layout } from './style'
-import { AppState, recoilState, Todo, TodoListType } from '@/dataStructure'
+import {
+  AppState,
+  recoilState,
+  Todo,
+  TodoListType,
+} from '../../../dataStructure'
 
 interface Props {
   todo: Todo

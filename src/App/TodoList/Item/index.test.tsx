@@ -2,8 +2,8 @@ import React from 'react'
 import { useRecoilState } from 'recoil'
 import { fireEvent, screen } from '@testing-library/react'
 import Item from './index'
-import { AppState, recoilState } from '@/dataStructure'
-import { renderWithRecoilRoot } from '@/testUtil'
+import { AppState, recoilState } from '../../../dataStructure'
+import { renderWithRecoilRoot } from '../../../testUtil'
 
 const initialRecoilState: AppState = {
   todoList: [
