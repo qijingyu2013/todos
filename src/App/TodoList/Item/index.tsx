@@ -63,7 +63,7 @@ const Item: React.FC<Props> = ({ todo }) => {
     const toggled: TodoListType = appState.todoList.map((t) => {
       // search clicked item by id...
       if (t.id === id) {
-        // change complated status only clicked item
+        // change completed status only clicked item
         return { ...t, completed: !t.completed }
         // return other item without any changes
       } else {
@@ -71,7 +71,9 @@ const Item: React.FC<Props> = ({ todo }) => {
       }
     })
 
-    setAppState({ todoList: toggled })
+    setAppState({
+      todoList: toggled,
+    })
   }
 
   const removeItem = (terminate: Todo['id']): void => {
@@ -79,7 +81,9 @@ const Item: React.FC<Props> = ({ todo }) => {
       (t: Todo): boolean => t.id !== terminate
     )
 
-    setAppState({ todoList: removed })
+    setAppState({
+      todoList: removed,
+    })
   }
 
   const handleTodoTextEdit = (
@@ -97,13 +101,14 @@ const Item: React.FC<Props> = ({ todo }) => {
       }
     )
 
-    setAppState({ todoList: edited })
+    setAppState({
+      todoList: edited,
+    })
   }
 
   useEffect(() => {
     // For fucus input element when double clicks text label. fix this https://github.com/laststance/create-react-app-typescript-todo-example-2020/issues/50
-    if (state.onEdit === true && editInput.current !== null)
-      editInput.current.focus()
+    if (state.onEdit && editInput.current !== null) editInput.current.focus()
   }, [editInput, state.onEdit])
 
   return (

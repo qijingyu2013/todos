@@ -1,36 +1,33 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import { Layout } from './style'
+import { useRecoilState } from 'recoil'
+import { DateState, dateState } from '../../dataStructure'
 
-class DailyPicker extends Component {
-  state = {
-    date: new Date(),
+const DailyPicker = () => {
+  // 默认使用系统当前时间，currentPickDate 修改后会记录到 sessionStorage
+  const [appState, setAppState] = useRecoilState<DateState>(dateState)
+  function onChange(date: Date) {
+    console.log("onChange date:", date)
+    setAppState({
+      date,
+    })
   }
-
-  onChange = (date: Date | Date[]) => this.setState({ date })
-
-  render = () => (
+  // const [date] = useState(new Date())
+  return (
     <Layout>
-      <Calendar
-        className="calendar"
-        onChange={this.onChange}
-        value={this.state.date}
-      />
+      <div>
+        <Calendar
+          className="calendar"
+          /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+          // @ts-ignore
+          onChange={onChange}
+          value={appState.date}
+        />
+      </div>
     </Layout>
   )
 }
-// function DailyPicker() {
-//   // 默认使用系统当前时间，currentPickDate 修改后会记录到 sessionStorage
-//   // const [currentPickDate, onChange] = useState(new Date())
-//   const [value, onChange] = useState(new Date())
-//   return (
-//     <Layout>
-//       <div className="main">
-//         <Calendar onChange={onChange} value={value} />
-//       </div>
-//     </Layout>
-//   )
-// }
 
 export default DailyPicker

@@ -1,26 +1,24 @@
 import React, { createRef } from 'react'
 import { UUID } from '../../functions'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { Layout } from './style'
-import { AppState, recoilState, Todo } from '../../dataStructure'
+import { AppState, dateState, recoilState, Todo } from '../../dataStructure'
 
 const NewTodoTextInput: React.FC = () => {
   const [appState, setAppState] = useRecoilState<AppState>(recoilState)
+  const dateStore = useRecoilValue(dateState);
   const textInput: React.RefObject<HTMLInputElement> = createRef<HTMLInputElement>()
-  // const [value, onChange] = useRecoilState<AppState>(new Date());
 
   function addTodo(e: React.KeyboardEvent<HTMLInputElement>): void {
     if (textInput.current === null) return
     if (e.key === 'Enter' && textInput.current.value.trim().length > 0) {
       /* eslint-disable-line prettier/prettier */
-      // let date = formatDate(new Date);
       // make new TODO object
       const todo: Todo = {
         id: UUID(),
         bodyText: textInput.current.value,
         completed: false,
-        date: new Date(),
-        // time: string,
+        date: dateStore.date,
       }
 
       // add new TODO to entire TodoList

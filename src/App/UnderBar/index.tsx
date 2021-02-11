@@ -1,8 +1,8 @@
 import React from 'react'
 import FilterLink from './FilterLink'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { Layout } from './style'
-import { AppState, recoilState, Routes, Todo } from '../../dataStructure'
+import { AppState, filteredTodoListState, recoilState, Routes, Todo } from '../../dataStructure'
 
 interface Props {
   path: Routes
@@ -10,11 +10,12 @@ interface Props {
 
 const UnderBar: React.FC<Props> = ({ path }) => {
   const [appState, setAppState] = useRecoilState<AppState>(recoilState)
-  const doneCount: number = appState.todoList.filter(
-    (t) => t.completed === true
+  const todoList = useRecoilValue(filteredTodoListState);
+  const doneCount: number = todoList.filter(
+    (t) => t.completed
   ).length /* eslint-disable-line prettier/prettier */
-  const yetCount: number = appState.todoList.filter(
-    (t) => t.completed === false
+  const yetCount: number = todoList.filter(
+    (t) => !t.completed
   ).length /* eslint-disable-line prettier/prettier */
 
   function clearCompleted(): void {

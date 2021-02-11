@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react'
 import Item from './Item'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { Layout } from './style'
-import { AppState, recoilState, Routes, Todo } from '../../dataStructure'
+import { AppState, filteredTodoListState, recoilState, Routes, Todo } from '../../dataStructure'
 
 interface Props {
   path: Routes
@@ -19,7 +19,7 @@ const TodoList: React.FC<Props> = ({ path }) => {
       ),
     }) /* eslint-disable-line prettier/prettier */
   }
-
+  const currentTodos = useRecoilValue(filteredTodoListState);
   return (
     <Layout>
       <section className="main">
@@ -33,15 +33,15 @@ const TodoList: React.FC<Props> = ({ path }) => {
         />
         <label htmlFor="toggle-all">Mark all as complete</label>
         <ul className="todo-list" data-testid="todo-list">
-          {appState.todoList
+          {currentTodos
             .filter((t: Todo): boolean => {
               switch (path) {
                 case '/':
                   return true
                 case '/active':
-                  return t.completed === false
+                  return !t.completed
                 case '/completed':
-                  return t.completed === true
+                  return t.completed
                 default:
                   return true
               }
