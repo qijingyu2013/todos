@@ -14,6 +14,7 @@ const initialRecoilState: AppState = {
       date: new Date()
     },
   ],
+  currentDate: new Date(),
 }
 
 const App = () => {
