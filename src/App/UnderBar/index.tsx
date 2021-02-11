@@ -19,6 +19,7 @@ const UnderBar: React.FC<Props> = ({ path }) => {
 
   function clearCompleted(): void {
     setAppState({
+      ...appState,
       todoList: appState.todoList.filter((t: Todo) => !t.completed),
     })
   }

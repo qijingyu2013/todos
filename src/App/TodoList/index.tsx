@@ -17,6 +17,7 @@ const TodoList: React.FC<Props> = ({ path }) => {
       todoList: appState.todoList.map(
         (t: Todo): Todo => ({ ...t, completed: e.target.checked })
       ),
+      currentDate: appState.currentDate,
     }) /* eslint-disable-line prettier/prettier */
   }
 
@@ -39,9 +40,9 @@ const TodoList: React.FC<Props> = ({ path }) => {
                 case '/':
                   return true
                 case '/active':
-                  return t.completed === false
+                  return !t.completed
                 case '/completed':
-                  return t.completed === true
+                  return t.completed
                 default:
                   return true
               }

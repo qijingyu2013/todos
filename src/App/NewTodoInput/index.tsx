@@ -25,6 +25,7 @@ const NewTodoTextInput: React.FC = () => {
 
       // add new TODO to entire TodoList
       setAppState({
+        ...appState,
         todoList: [todo, ...appState.todoList],
       })
 

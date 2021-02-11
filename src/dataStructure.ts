@@ -13,6 +13,7 @@ export type TodoListType = Todo[]
 
 export interface AppState {
   todoList: TodoListType
+  currentDate: Date | Date[]
 }
 
 export enum LocalStorageKey {
@@ -29,6 +30,7 @@ function LoadAppStateFromLocalStorage(): AppState {
 
   return {
     todoList: [],
+    currentDate: new Date(),
   }
 }
 

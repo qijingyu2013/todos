@@ -71,7 +71,10 @@ const Item: React.FC<Props> = ({ todo }) => {
       }
     })
 
-    setAppState({ todoList: toggled })
+    setAppState({
+      ...appState,
+      todoList: toggled,
+    })
   }
 
   const removeItem = (terminate: Todo['id']): void => {
@@ -79,7 +82,10 @@ const Item: React.FC<Props> = ({ todo }) => {
       (t: Todo): boolean => t.id !== terminate
     )
 
-    setAppState({ todoList: removed })
+    setAppState({
+      ...appState,
+      todoList: removed,
+    })
   }
 
   const handleTodoTextEdit = (
@@ -97,7 +103,9 @@ const Item: React.FC<Props> = ({ todo }) => {
       }
     )
 
-    setAppState({ todoList: edited })
+    setAppState({
+      ...appState,
+      todoList: edited, })
   }
 
   useEffect(() => {
