@@ -21,6 +21,17 @@ const TodoList: React.FC<Props> = ({ path }) => {
     }) /* eslint-disable-line prettier/prettier */
   }
 
+  const currentTodos = appState.todoList.filter((item) => {
+    const current: Date = new Date(appState.currentDate)
+    const itemDate: Date = new Date(item.date)
+    // eslint-disable-next-line eqeqeq
+    return (
+      itemDate.getDate() == current.getDate()
+      && itemDate.getMonth() == current.getMonth()
+      && itemDate.getFullYear() == current.getFullYear()
+    )
+  })
+
   return (
     <Layout>
       <section className="main">
@@ -34,7 +45,7 @@ const TodoList: React.FC<Props> = ({ path }) => {
         />
         <label htmlFor="toggle-all">Mark all as complete</label>
         <ul className="todo-list" data-testid="todo-list">
-          {appState.todoList
+          {currentTodos
             .filter((t: Todo): boolean => {
               switch (path) {
                 case '/':

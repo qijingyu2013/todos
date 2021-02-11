@@ -13,7 +13,7 @@ export type TodoListType = Todo[]
 
 export interface AppState {
   todoList: TodoListType
-  currentDate: Date | Date[]
+  currentDate: Date
 }
 
 export enum LocalStorageKey {

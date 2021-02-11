@@ -19,7 +19,7 @@ const NewTodoTextInput: React.FC = () => {
         id: UUID(),
         bodyText: textInput.current.value,
         completed: false,
-        date: new Date(),
+        date: appState.currentDate,
         // time: string,
       }
 

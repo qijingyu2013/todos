@@ -9,7 +9,7 @@ const DailyPicker = () => {
   // 默认使用系统当前时间，currentPickDate 修改后会记录到 sessionStorage
   // const [currentPickDate, onChange] = useState(new Date())
   const [appState, setAppState] = useRecoilState<AppState>(recoilState)
-  function onChange(date: Date | Date[]) {
+  function onChange(date: Date) {
     console.log("onChange date:", date)
     setAppState({
       ...appState,
@@ -22,6 +22,8 @@ const DailyPicker = () => {
       <div>
         <Calendar
           className="calendar"
+          /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
+          // @ts-ignore
           onChange={onChange}
           value={value}
         />
