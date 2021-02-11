@@ -7,7 +7,6 @@ import { MutableSnapshot, RecoilRoot } from 'recoil'
 
 const defaultValue: AppState = {
   todoList: [],
-  currentDate: new Date(),
 }
 
 export const renderWithRecoilRoot = (

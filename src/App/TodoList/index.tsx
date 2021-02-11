@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react'
 import Item from './Item'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { Layout } from './style'
-import { AppState, recoilState, Routes, Todo } from '../../dataStructure'
+import { AppState, filteredTodoListState, recoilState, Routes, Todo } from '../../dataStructure'
 
 interface Props {
   path: Routes
@@ -17,21 +17,9 @@ const TodoList: React.FC<Props> = ({ path }) => {
       todoList: appState.todoList.map(
         (t: Todo): Todo => ({ ...t, completed: e.target.checked })
       ),
-      currentDate: appState.currentDate,
     }) /* eslint-disable-line prettier/prettier */
   }
-
-  const currentTodos = appState.todoList.filter((item) => {
-    const current: Date = new Date(appState.currentDate)
-    const itemDate: Date = new Date(item.date)
-    // eslint-disable-next-line eqeqeq
-    return (
-      itemDate.getDate() == current.getDate()
-      && itemDate.getMonth() == current.getMonth()
-      && itemDate.getFullYear() == current.getFullYear()
-    )
-  })
-
+  const currentTodos = useRecoilValue(filteredTodoListState);
   return (
     <Layout>
       <section className="main">

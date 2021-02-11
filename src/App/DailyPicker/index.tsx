@@ -1,22 +1,20 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import { Layout } from './style'
 import { useRecoilState } from 'recoil'
-import { AppState, recoilState } from '../../dataStructure'
+import { DateState, dateState } from '../../dataStructure'
 
 const DailyPicker = () => {
   // 默认使用系统当前时间，currentPickDate 修改后会记录到 sessionStorage
-  // const [currentPickDate, onChange] = useState(new Date())
-  const [appState, setAppState] = useRecoilState<AppState>(recoilState)
+  const [appState, setAppState] = useRecoilState<DateState>(dateState)
   function onChange(date: Date) {
     console.log("onChange date:", date)
     setAppState({
-      ...appState,
-      currentDate: date,
+      date,
     })
   }
-  const [value] = useState(new Date())
+  // const [date] = useState(new Date())
   return (
     <Layout>
       <div>
@@ -25,7 +23,7 @@ const DailyPicker = () => {
           /* eslint-disable-next-line @typescript-eslint/ban-ts-comment */
           // @ts-ignore
           onChange={onChange}
-          value={value}
+          value={appState.date}
         />
       </div>
     </Layout>

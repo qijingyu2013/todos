@@ -72,7 +72,6 @@ const Item: React.FC<Props> = ({ todo }) => {
     })
 
     setAppState({
-      ...appState,
       todoList: toggled,
     })
   }
@@ -83,7 +82,6 @@ const Item: React.FC<Props> = ({ todo }) => {
     )
 
     setAppState({
-      ...appState,
       todoList: removed,
     })
   }
@@ -104,7 +102,6 @@ const Item: React.FC<Props> = ({ todo }) => {
     )
 
     setAppState({
-      ...appState,
       todoList: edited,
     })
   }

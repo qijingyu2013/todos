@@ -1,4 +1,4 @@
-import { atom, RecoilState } from 'recoil'
+import { atom, RecoilState, selector } from 'recoil'
 
 export type Routes = '/' | '/active' | '/completed'
 
@@ -13,7 +13,10 @@ export type TodoListType = Todo[]
 
 export interface AppState {
   todoList: TodoListType
-  currentDate: Date
+}
+
+export interface DateState {
+  date: Date
 }
 
 export enum LocalStorageKey {
@@ -30,7 +33,6 @@ function LoadAppStateFromLocalStorage(): AppState {
 
   return {
     todoList: [],
-    currentDate: new Date(),
   }
 }
 
@@ -38,3 +40,30 @@ export const recoilState: RecoilState<AppState> = atom({
   key: 'initialAppState',
   default: LoadAppStateFromLocalStorage(),
 })
+
+export const dateState: RecoilState<DateState> = atom({
+  key: 'initialDateState',
+  default: {
+    date: new Date()
+  },
+})
+
+export const filteredTodoListState = selector({
+  key: 'filteredTodoListState',
+  get: ({get}) => {
+    const filterState = get(dateState);
+    const appState = get(recoilState);
+
+    const currentTodos = appState.todoList.filter((item) => {
+      const current: Date = new Date(item.date)
+      const filter: Date = new Date(filterState.date)
+      // eslint-disable-next-line eqeqeq
+      return (
+        filter.getDate() == current.getDate()
+        && filter.getMonth() == current.getMonth()
+        && filter.getFullYear() == current.getFullYear()
+      )
+    })
+    return currentTodos
+  },
+});
