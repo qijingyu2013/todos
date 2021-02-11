@@ -2,8 +2,12 @@ import React, { Component } from 'react'
 import Calendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import { Layout } from './style'
+import { DailyPickerPropsType, DailyPickerStateType } from './type'
 
-class DailyPicker extends Component {
+class DailyPicker extends Component<
+  DailyPickerPropsType,
+  DailyPickerStateType
+> {
   state = {
     date: new Date(),
   }
