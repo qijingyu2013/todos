@@ -13,6 +13,7 @@ import {
   Routes,
 } from '../dataStructure'
 import DailyPicker from './DailyPicker'
+import StatisticsBar from './StatisticsBar'
 
 interface Props {
   path: Routes
@@ -40,6 +41,7 @@ const App: React.FC<Props & RouteComponentProps> = ({ path }) => {
           </>
         ) : null}
       </section>
+      <StatisticsBar />
       <Copyright />
     </Layout>
   )
