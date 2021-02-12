@@ -15,7 +15,7 @@ const FilterLink: React.FC<Props> = ({ path }) => {
           className={path === '/' ? 'selected' : ''}
           to="/"
         >
-          All
+          全部
         </Link>
       </li>
       <li>
@@ -24,7 +24,7 @@ const FilterLink: React.FC<Props> = ({ path }) => {
           className={path === '/active' ? 'selected' : ''}
           to="/active"
         >
-          Active
+          进行中
         </Link>
       </li>
       <li>
@@ -33,7 +33,7 @@ const FilterLink: React.FC<Props> = ({ path }) => {
           className={path === '/completed' ? 'selected' : ''}
           to="/completed"
         >
-          Completed
+          已完成
         </Link>
       </li>
     </ul>

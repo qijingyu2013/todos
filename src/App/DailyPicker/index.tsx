@@ -14,7 +14,7 @@ const DailyPicker = () => {
       date,
     })
   }
-  // const [date] = useState(new Date())
+
   return (
     <Layout>
       <div>

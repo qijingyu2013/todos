@@ -28,8 +28,7 @@ const UnderBar: React.FC<Props> = ({ path }) => {
     <Layout>
       <footer className="footer">
         <span className="todo-count">
-          <strong data-cy="remaining-uncompleted-todo-count">{yetCount}</strong>{' '}
-          item left
+          <strong data-cy="remaining-uncompleted-todo-count">{yetCount}</strong>{' '}项任务未完成
         </span>
         <FilterLink path={path} />
 
@@ -39,7 +38,7 @@ const UnderBar: React.FC<Props> = ({ path }) => {
             className="clear-completed"
             data-cy="clear-completed-button"
           >
-            Clear completed
+            清空已完成任务
           </button>
         )}
       </footer>

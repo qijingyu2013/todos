@@ -54,7 +54,7 @@ export const filteredTodoListState = selector({
     const filterState = get(dateState);
     const appState = get(recoilState);
 
-    const currentTodos = appState.todoList.filter((item) => {
+    return appState.todoList.filter((item) => {
       const current: Date = new Date(item.date)
       const filter: Date = new Date(filterState.date)
       // eslint-disable-next-line eqeqeq
@@ -64,6 +64,5 @@ export const filteredTodoListState = selector({
         && filter.getFullYear() == current.getFullYear()
       )
     })
-    return currentTodos
   },
 });
