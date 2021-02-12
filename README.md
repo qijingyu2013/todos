@@ -1,4 +1,4 @@
-# Todos
+# Todos with daily
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/94ad28c3-2ccd-40b2-9b9f-35ab89148f43/deploy-status)](https://app.netlify.com/sites/create-react-app-typescript-todo-example/deploys)
 ![CI](https://github.com/laststance/create-react-app-typescript-todo-example-2020/workflows/CI/badge.svg)
