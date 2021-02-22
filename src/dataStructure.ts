@@ -44,25 +44,25 @@ export const recoilState: RecoilState<AppState> = atom({
 export const dateState: RecoilState<DateState> = atom({
   key: 'initialDateState',
   default: {
-    date: new Date()
+    date: new Date(),
   },
 })
 
 export const filteredTodoListState = selector({
   key: 'filteredTodoListState',
-  get: ({get}) => {
-    const filterState = get(dateState);
-    const appState = get(recoilState);
+  get: ({ get }) => {
+    const filterState = get(dateState)
+    const appState = get(recoilState)
 
     return appState.todoList.filter((item) => {
       const current: Date = new Date(item.date)
       const filter: Date = new Date(filterState.date)
       // eslint-disable-next-line eqeqeq
       return (
-        filter.getDate() == current.getDate()
-        && filter.getMonth() == current.getMonth()
-        && filter.getFullYear() == current.getFullYear()
+        filter.getDate() === current.getDate() &&
+        filter.getMonth() ===current.getMonth() &&
+        filter.getFullYear() === current.getFullYear()
       )
     })
   },
-});
+})

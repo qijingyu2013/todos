@@ -11,53 +11,57 @@ interface StatisticsType {
 }
 
 const StatisticsBar: React.FC = () => {
-  const appState = useRecoilValue(recoilState);
+  const appState = useRecoilValue(recoilState)
   // todo 根据时间进行重新排序
-  const data: StatisticsType[] = [];
-  appState.todoList.forEach((item)=>{
+  const data: StatisticsType[] = []
+  appState.todoList.forEach((item) => {
     const iDate = new Date(item.date)
     // 把当前已经存在的过滤出来
-    const rlt = data.filter((statData)=>{
+    const rlt = data.filter((statData) => {
       const sDate = new Date(statData.date)
-      return iDate.getDate() == sDate.getDate()
-      && iDate.getMonth() == sDate.getMonth()
-      && iDate.getFullYear() == sDate.getFullYear()
+      return (
+        iDate.getDate() == sDate.getDate() &&
+        iDate.getMonth() == sDate.getMonth() &&
+        iDate.getFullYear() == sDate.getFullYear()
+      )
     })
-    if(rlt.length) {
+    if (rlt.length) {
       data.forEach((statData, i) => {
         const sDate = new Date(statData.date)
-        if(iDate.getDate() == sDate.getDate()
-          && iDate.getMonth() == sDate.getMonth()
-          && iDate.getFullYear() == sDate.getFullYear()) {
+        if (
+          iDate.getDate() == sDate.getDate() &&
+          iDate.getMonth() == sDate.getMonth() &&
+          iDate.getFullYear() == sDate.getFullYear()
+        ) {
           data[i] = {
             date: statData.date,
-            num: statData.num+1,
+            num: statData.num + 1,
           }
         }
       })
     } else {
       data.push({
         num: 1,
-        date: iDate
+        date: iDate,
       })
     }
-
   })
-  const orderTodos = _.orderBy(data, "date", "asc")
+  const orderTodos = _.orderBy(data, 'date', 'asc')
   return (
     <Layout>
       <ul className="stat">
-        {orderTodos?.map((sdata)=>{
+        {orderTodos?.map((sdata) => {
           const curr = new Date(sdata.date)
-          const label = `在${curr.getFullYear()}年${curr.getMonth()+1}月${curr.getDate()}日还有${sdata.num}项任务未完成！`
-          return (<li>
-            <div className="view">
-              <label
-              >
-                {label}
-              </label>
-            </div>
-          </li>)
+          const label = `在${curr.getFullYear()}年${
+            curr.getMonth() + 1
+          }月${curr.getDate()}日还有${sdata.num}项任务未完成！`
+          return (
+            <li>
+              <div className="view">
+                <label>{label}</label>
+              </div>
+            </li>
+          )
         })}
       </ul>
     </Layout>

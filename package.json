@@ -1,7 +1,7 @@
 {
   "name": "todos",
   "scripts": {
-    "start": "react-scripts -r @cypress/instrument-cra start",
+    "start": "PORT=3333 react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
     "start:prod-build": "serve -s build",
     "test": "react-scripts test",

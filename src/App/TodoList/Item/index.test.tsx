@@ -11,7 +11,7 @@ const initialRecoilState: AppState = {
       id: '8btxpD9kDBlo',
       bodyText: 'cut tomato',
       completed: false,
-      date: new Date()
+      date: new Date(),
     },
   ],
 }

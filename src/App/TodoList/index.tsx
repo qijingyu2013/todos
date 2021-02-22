@@ -2,7 +2,13 @@ import React, { ReactElement } from 'react'
 import Item from './Item'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { Layout } from './style'
-import { AppState, filteredTodoListState, recoilState, Routes, Todo } from '../../dataStructure'
+import {
+  AppState,
+  filteredTodoListState,
+  recoilState,
+  Routes,
+  Todo,
+} from '../../dataStructure'
 
 interface Props {
   path: Routes
@@ -19,7 +25,7 @@ const TodoList: React.FC<Props> = ({ path }) => {
       ),
     }) /* eslint-disable-line prettier/prettier */
   }
-  const currentTodos = useRecoilValue(filteredTodoListState);
+  const currentTodos = useRecoilValue(filteredTodoListState)
   return (
     <Layout>
       <section className="main">

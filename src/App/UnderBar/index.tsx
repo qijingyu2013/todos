@@ -2,7 +2,13 @@ import React from 'react'
 import FilterLink from './FilterLink'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { Layout } from './style'
-import { AppState, filteredTodoListState, recoilState, Routes, Todo } from '../../dataStructure'
+import {
+  AppState,
+  filteredTodoListState,
+  recoilState,
+  Routes,
+  Todo,
+} from '../../dataStructure'
 
 interface Props {
   path: Routes
@@ -10,13 +16,11 @@ interface Props {
 
 const UnderBar: React.FC<Props> = ({ path }) => {
   const [appState, setAppState] = useRecoilState<AppState>(recoilState)
-  const todoList = useRecoilValue(filteredTodoListState);
-  const doneCount: number = todoList.filter(
-    (t) => t.completed
-  ).length /* eslint-disable-line prettier/prettier */
-  const yetCount: number = todoList.filter(
-    (t) => !t.completed
-  ).length /* eslint-disable-line prettier/prettier */
+  const todoList = useRecoilValue(filteredTodoListState)
+  const doneCount: number = todoList.filter((t) => t.completed)
+    .length /* eslint-disable-line prettier/prettier */
+  const yetCount: number = todoList.filter((t) => !t.completed)
+    .length /* eslint-disable-line prettier/prettier */
 
   function clearCompleted(): void {
     setAppState({
@@ -28,7 +32,8 @@ const UnderBar: React.FC<Props> = ({ path }) => {
     <Layout>
       <footer className="footer">
         <span className="todo-count">
-          <strong data-cy="remaining-uncompleted-todo-count">{yetCount}</strong>{' '}项任务未完成
+          <strong data-cy="remaining-uncompleted-todo-count">{yetCount}</strong>{' '}
+          项任务未完成
         </span>
         <FilterLink path={path} />
 
